@@ -10,17 +10,22 @@ import {
   SidebarContainer,
 } from "./styles";
 
+// src/components/SideBar/index.jsx
 import logoImg from "./assets/Logo.svg";
+import feedIcon from "./assets/feed.svg";
+import accountIcon from "./assets/account_circle.svg";
+import infoIcon from "./assets/info.svg";
+import logoutIcon from "./assets/logout.svg";
 import { NavLink } from "react-router-dom";
 
-const links = [
-  { name: "Feed", path: "/", src: "./assets/feed.svg" },
-  { name: "Perfil", path: "/perfil", src: "./assets/account_circle.svg" },
-  { name: "Sobre nós", path: "/promocoes", src: "./assets/info.svg" },
-  { name: "Sair", path: "/produtos", src: "./assets/logout.svg" },
-];
-
 const SideBar = () => {
+  const links = [
+    { name: "Feed", path: "/", src: feedIcon },
+    { name: "Perfil", path: "/perfil", src: accountIcon },
+    { name: "Sobre nós", path: "/promocoes", src: infoIcon },
+    { name: "Sair", path: "/login", src: logoutIcon },
+  ];
+
   return (
     <SidebarContainer>
       <LogoImg src={logoImg} alt="Logo CodeConnect" />
@@ -29,19 +34,17 @@ const SideBar = () => {
           <ItemListaNav>
             <LinkPublicarEstilizado>Publicar</LinkPublicarEstilizado>
           </ItemListaNav>
-          <ItemListaNav>
-            {links.map((link, index) => (
-              <li key={index}>
-                <NavLink
-                  to={link.path}
-                  className={({ isActive }) => (isActive ? "ativo" : "")}
-                >
-                  <p>{link.name}</p>
-                  <img src={link.src}/>
-                </NavLink>
-              </li>
-            ))}
-          </ItemListaNav>
+          {links.map((link, index) => (
+            <ItemListaNav key={index}>
+              <NavLink
+                to={link.path}
+                className={({ isActive }) => (isActive ? "ativo" : "")}
+              >
+                <img src={link.src} />
+                <p>{link.name}</p>
+              </NavLink>
+            </ItemListaNav>
+          ))}
         </ListaNav>
       </Nav>
     </SidebarContainer>
