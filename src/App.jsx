@@ -1,8 +1,9 @@
+import SideBar from "./components/SideBar";
 
 
 function App() {
   return <>
-  CAMILA É FEIA
+    <SideBar/>
   </>;
 }
 
