@@ -46,9 +46,13 @@ const SideBar = () => {
       <LogoImg src={logoImg} alt="Logo CodeConnect" />
       <Nav>
         <ListaNav>
-          <ItemListaNav>
-            <LinkPublicarEstilizado>Publicar</LinkPublicarEstilizado>
-          </ItemListaNav>
+          <LinkPublicarEstilizado
+            to="/publicar"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Publicar
+          </LinkPublicarEstilizado>
+
           {links.map((link, index) => (
             <ItemListaNav key={index}>
               <NavLink

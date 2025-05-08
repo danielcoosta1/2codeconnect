@@ -1,4 +1,5 @@
 // src/components/SideBar/styles.js
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const SidebarContainer = styled.aside`
@@ -34,11 +35,35 @@ export const ItemListaNav = styled.li`
     }
 
     &.active {
+      text-decoration: underline;
       color: #ffffff;
+
+      img {
+        filter: brightness(1.2);
+      }
+
+      p {
+        font-weight: bold;
+      }
     }
   }
 `;
 
-export const LinkPublicarEstilizado = styled.a``;
+export const LinkPublicarEstilizado = styled(NavLink)`
+  color: #81fe88;
+  border: 1px solid #81fe88;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+  &.active {
+    background-color: #81fe88;
+    color: #171d1f;
+    font-weight: bold;
+  }
+`;
 
 export const LogoImg = styled.img``;
