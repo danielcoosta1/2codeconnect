@@ -55,11 +55,11 @@ const Publicar = () => {
           <ContainerBotoes>
             <BotaoDescartar>
               <p>Descartar</p>
-              <img src={iconeTrash} />
+              <img src={iconeTrash} alt="ícone de lixeira"/>
             </BotaoDescartar>
             <BotaoPublicar>
               <p>Publicar</p>
-              <img src={arrowForward} />
+              <img src={arrowForward} alt="ícone de carregamento(flesha para cima)" />
             </BotaoPublicar>
           </ContainerBotoes>
         </ContainerDireito>
