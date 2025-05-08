@@ -125,6 +125,7 @@ export const BotaoDescartar = styled.button`
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
   width: 100%;
+  font-size: 1rem;
 
   &:hover {
     background-color: rgba(129, 254, 136, 0.1);
@@ -147,6 +148,7 @@ export const BotaoPublicar = styled.button`
   align-items: center;
   justify-content: center;
   gap: 0.5em;
+  font-size: 1rem;
 
   background-color: #81fe88;
   color: #132e35;
