@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const SidebarContainer = styled.aside`
-  width: 177px;
+  width: 200px;
   height: 100vh;
   background-color: #171d1f;
   display: flex;
@@ -17,11 +17,13 @@ export const Nav = styled.nav``;
 
 export const ListaNav = styled.ul`
   display: flex;
+  
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.6rem;
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-size: 1.25rem;
 `;
 
 export const ItemListaNav = styled.li`
@@ -49,6 +51,8 @@ export const ItemListaNav = styled.li`
     }
   }
 `;
+
+
 
 export const LinkPublicarEstilizado = styled(NavLink)`
   color: #81fe88;
