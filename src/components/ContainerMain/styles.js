@@ -12,5 +12,6 @@ export const ContainerEstilizado = styled.div`
   main {
     flex: 1;
     overflow-x: auto; /* Permite scroll horizontal */
+    padding: 0 1.5rem;
   }
 `;
