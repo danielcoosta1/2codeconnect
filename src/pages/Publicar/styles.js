@@ -7,9 +7,10 @@ export const ContainerMainPublicar = styled.section`
   gap: 1.5rem;
   min-width: 60rem;
   input {
-    padding: 0.5em 1.5em;
+    padding: 1em 1.5em;
     background-color: #888888;
     border-radius: 4px;
+    font-size: 1rem;
   }
 `;
 
@@ -57,6 +58,8 @@ export const InputDescricaoProjeto = styled.div`
     background-color: #888888;
     border-radius: 4px;
     min-height: 60px;
+    padding: 1em 1.5em;
+    font-size: 1rem;
   }
 `;
 
@@ -75,7 +78,7 @@ export const ContainerBotoes = styled.div`
   font-weight: bold;
 `;
 
-export const BotaoDescartar = styled.div`
+export const BotaoDescartar = styled.button`
   display: flex;
   gap: 0.5em;
   border: 1px solid #81fe88;
@@ -86,7 +89,7 @@ export const BotaoDescartar = styled.div`
   cursor: pointer;
 `;
 
-export const BotaoPublicar = styled.div`
+export const BotaoPublicar = styled.button`
   display: flex;
   gap: 0.5em;
   align-items: center;
