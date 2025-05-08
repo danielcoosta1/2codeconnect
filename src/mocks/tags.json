@@ -1,0 +1,502 @@
+[
+    {
+      "id": 1,
+      "nome": "Front-End",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 2,
+      "nome": "Back-End",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 3,
+      "nome": "Full-Stack",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 4,
+      "nome": "JavaScript",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 5,
+      "nome": "TypeScript",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 6,
+      "nome": "Python",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 7,
+      "nome": "Java",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 8,
+      "nome": "C#",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 9,
+      "nome": "PHP",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 10,
+      "nome": "Ruby",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 11,
+      "nome": "Go",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 12,
+      "nome": "Swift",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 13,
+      "nome": "Kotlin",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 14,
+      "nome": "Dart",
+      "categoria": "Linguagens de Programação"
+    },
+    {
+      "id": 15,
+      "nome": "Flutter",
+      "categoria": "Desenvolvimento Mobile"
+    },
+    {
+      "id": 16,
+      "nome": "React Native",
+      "categoria": "Desenvolvimento Mobile"
+    },
+    {
+      "id": 17,
+      "nome": "Mobile Development",
+      "categoria": "Desenvolvimento Mobile"
+    },
+    {
+      "id": 18,
+      "nome": "Web Development",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 19,
+      "nome": "API",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 20,
+      "nome": "REST",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 21,
+      "nome": "GraphQL",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 22,
+      "nome": "SQL",
+      "categoria": "Banco de Dados"
+    },
+    {
+      "id": 23,
+      "nome": "NoSQL",
+      "categoria": "Banco de Dados"
+    },
+    {
+      "id": 24,
+      "nome": "MongoDB",
+      "categoria": "Banco de Dados"
+    },
+    {
+      "id": 25,
+      "nome": "Firebase",
+      "categoria": "Banco de Dados"
+    },
+    {
+      "id": 26,
+      "nome": "Docker",
+      "categoria": "DevOps"
+    },
+    {
+      "id": 27,
+      "nome": "Kubernetes",
+      "categoria": "DevOps"
+    },
+    {
+      "id": 28,
+      "nome": "DevOps",
+      "categoria": "DevOps"
+    },
+    {
+      "id": 29,
+      "nome": "CI/CD",
+      "categoria": "DevOps"
+    },
+    {
+      "id": 30,
+      "nome": "Git",
+      "categoria": "Ferramentas"
+    },
+    {
+      "id": 31,
+      "nome": "GitHub",
+      "categoria": "Ferramentas"
+    },
+    {
+      "id": 32,
+      "nome": "GitLab",
+      "categoria": "Ferramentas"
+    },
+    {
+      "id": 33,
+      "nome": "Bitbucket",
+      "categoria": "Ferramentas"
+    },
+    {
+      "id": 34,
+      "nome": "Agile",
+      "categoria": "Metodologias"
+    },
+    {
+      "id": 35,
+      "nome": "Scrum",
+      "categoria": "Metodologias"
+    },
+    {
+      "id": 36,
+      "nome": "Kanban",
+      "categoria": "Metodologias"
+    },
+    {
+      "id": 37,
+      "nome": "UX/UI",
+      "categoria": "Design"
+    },
+    {
+      "id": 38,
+      "nome": "Figma",
+      "categoria": "Design"
+    },
+    {
+      "id": 39,
+      "nome": "Adobe XD",
+      "categoria": "Design"
+    },
+    {
+      "id": 40,
+      "nome": "Responsive Design",
+      "categoria": "Design"
+    },
+    {
+      "id": 41,
+      "nome": "Accessibility",
+      "categoria": "Design"
+    },
+    {
+      "id": 42,
+      "nome": "SEO",
+      "categoria": "Marketing Digital"
+    },
+    {
+      "id": 43,
+      "nome": "Performance Optimization",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 44,
+      "nome": "Testing",
+      "categoria": "Qualidade"
+    },
+    {
+      "id": 45,
+      "nome": "Unit Testing",
+      "categoria": "Qualidade"
+    },
+    {
+      "id": 46,
+      "nome": "Integration Testing",
+      "categoria": "Qualidade"
+    },
+    {
+      "id": 47,
+      "nome": "End-to-End Testing",
+      "categoria": "Qualidade"
+    },
+    {
+      "id": 48,
+      "nome": "Jest",
+      "categoria": "Qualidade"
+    },
+    {
+      "id": 49,
+      "nome": "Cypress",
+      "categoria": "Qualidade"
+    },
+    {
+      "id": 50,
+      "nome": "Selenium",
+      "categoria": "Qualidade"
+    },
+    {
+      "id": 51,
+      "nome": "Machine Learning",
+      "categoria": "Inteligência Artificial"
+    },
+    {
+      "id": 52,
+      "nome": "Artificial Intelligence",
+      "categoria": "Inteligência Artificial"
+    },
+    {
+      "id": 53,
+      "nome": "Data Science",
+      "categoria": "Ciência de Dados"
+    },
+    {
+      "id": 54,
+      "nome": "Big Data",
+      "categoria": "Ciência de Dados"
+    },
+    {
+      "id": 55,
+      "nome": "Cloud Computing",
+      "categoria": "Computação em Nuvem"
+    },
+    {
+      "id": 56,
+      "nome": "AWS",
+      "categoria": "Computação em Nuvem"
+    },
+    {
+      "id": 57,
+      "nome": "Azure",
+      "categoria": "Computação em Nuvem"
+    },
+    {
+      "id": 58,
+      "nome": "Google Cloud",
+      "categoria": "Computação em Nuvem"
+    },
+    {
+      "id": 59,
+      "nome": "Serverless",
+      "categoria": "Computação em Nuvem"
+    },
+    {
+      "id": 60,
+      "nome": "Microservices",
+      "categoria": "Arquitetura"
+    },
+    {
+      "id": 61,
+      "nome": "Monolithic Architecture",
+      "categoria": "Arquitetura"
+    },
+    {
+      "id": 62,
+      "nome": "Progressive Web Apps (PWA)",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 63,
+      "nome": "WebAssembly",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 64,
+      "nome": "Blockchain",
+      "categoria": "Tecnologias Emergentes"
+    },
+    {
+      "id": 65,
+      "nome": "Smart Contracts",
+      "categoria": "Tecnologias Emergentes"
+    },
+    {
+      "id": 66,
+      "nome": "Cybersecurity",
+      "categoria": "Segurança"
+    },
+    {
+      "id": 67,
+      "nome": "Ethical Hacking",
+      "categoria": "Segurança"
+    },
+    {
+      "id": 68,
+      "nome": "Linux",
+      "categoria": "Sistemas Operacionais"
+    },
+    {
+      "id": 69,
+      "nome": "Windows",
+      "categoria": "Sistemas Operacionais"
+    },
+    {
+      "id": 70,
+      "nome": "macOS",
+      "categoria": "Sistemas Operacionais"
+    },
+    {
+      "id": 71,
+      "nome": "Bash Scripting",
+      "categoria": "Scripting"
+    },
+    {
+      "id": 72,
+      "nome": "PowerShell",
+      "categoria": "Scripting"
+    },
+    {
+      "id": 73,
+      "nome": "Automation",
+      "categoria": "Automação"
+    },
+    {
+      "id": 74,
+      "nome": "Chatbots",
+      "categoria": "Inteligência Artificial"
+    },
+    {
+      "id": 75,
+      "nome": "IoT",
+      "categoria": "Tecnologias Emergentes"
+    },
+    {
+      "id": 76,
+      "nome": "AR/VR",
+      "categoria": "Tecnologias Emergentes"
+    },
+    {
+      "id": 77,
+      "nome": "Game Development",
+      "categoria": "Desenvolvimento de Jogos"
+    },
+    {
+      "id": 78,
+      "nome": "Unity",
+      "categoria": "Desenvolvimento de Jogos"
+    },
+    {
+      "id": 79,
+      "nome": "Unreal Engine",
+      "categoria": "Desenvolvimento de Jogos"
+    },
+    {
+      "id": 80,
+      "nome": "3D Modeling",
+      "categoria": "Design"
+    },
+    {
+      "id": 81,
+      "nome": "Data Visualization",
+      "categoria": "Ciência de Dados"
+    },
+    {
+      "id": 82,
+      "nome": "D3.js",
+      "categoria": "Ciência de Dados"
+    },
+    {
+      "id": 83,
+      "nome": "Chart.js",
+      "categoria": "Ciência de Dados"
+    },
+    {
+      "id": 84,
+      "nome": "WebSockets",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 85,
+      "nome": "Real-Time Applications",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 86,
+      "nome": "WebRTC",
+      "categoria": "Desenvolvimento Web"
+    },
+    {
+      "id": 87,
+      "nome": "Electron",
+      "categoria": "Desenvolvimento de Aplicativos"
+    },
+    {
+      "id": 88,
+      "nome": "Desktop Applications",
+      "categoria": "Desenvolvimento de Aplicativos"
+    },
+    {
+      "id": 89,
+      "nome": "Open Source",
+      "categoria": "Comunidade"
+    },
+    {
+      "id": 90,
+      "nome": "Contributing",
+      "categoria": "Comunidade"
+    },
+    {
+      "id": 91,
+      "nome": "Code Review",
+      "categoria": "Boas Práticas"
+    },
+    {
+      "id": 92,
+      "nome": "Debugging",
+      "categoria": "Boas Práticas"
+    },
+    {
+      "id": 93,
+      "nome": "Algorithms",
+      "categoria": "Fundamentos"
+    },
+    {
+      "id": 94,
+      "nome": "Data Structures",
+      "categoria": "Fundamentos"
+    },
+    {
+      "id": 95,
+      "nome": "Design Patterns",
+      "categoria": "Fundamentos"
+    },
+    {
+      "id": 96,
+      "nome": "Clean Code",
+      "categoria": "Boas Práticas"
+    },
+    {
+      "id": 97,
+      "nome": "Refactoring",
+      "categoria": "Boas Práticas"
+    },
+    {
+      "id": 98,
+      "nome": "Technical Writing",
+      "categoria": "Comunicação"
+    },
+    {
+      "id": 99,
+      "nome": "Documentation",
+      "categoria": "Comunicação"
+    },
+    {
+      "id": 100,
+      "nome": "Community",
+      "categoria": "Comunidade"
+    }
+  ]
