@@ -9,9 +9,14 @@ padding: 2rem;
 
 export const ContainerEsquerdo = styled.div``;
 
-export const ContainerImgUpload = styled.div``;
+export const ContainerImgUpload = styled.div`
+background-color: #888888;
 
-export const ImgUpload = styled.img``;
+`;
+
+export const ImgUpload = styled.img`
+max-width: 450px;
+`;
 
 export const UploadButton = styled.button``;
 

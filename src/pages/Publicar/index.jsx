@@ -11,14 +11,14 @@ import {
   Tags,
   UploadButton,
 } from "./styles";
-
+import imgDefault from "./assets/img-default-upload.png"
 const Publicar = () => {
   return (
     <ContainerMain>
       <ContainerMainPublicar>
         <ContainerEsquerdo>
           <ContainerImgUpload>
-            <ImgUpload />
+            <ImgUpload src={imgDefault} />
           </ContainerImgUpload>
           <UploadButton>Carregar Imagem</UploadButton>
           <ContainerInfoImgUpload>
