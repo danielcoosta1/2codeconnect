@@ -66,7 +66,7 @@ export const ContainerDireito = styled.section`
   color: #e1e1e1;
 
   h2 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 `;
 
