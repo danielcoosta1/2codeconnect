@@ -8,10 +8,20 @@ datasource db {
 }
 
 model Publicacao {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  nome       String
-  descricao  String
-  imagem     String
-  tags       String[]
-  createdAt  DateTime @default(now())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome        String
+  descricao   String
+  imagem      String
+  tags        String[]
+  userId      String   @db.ObjectId
+  autor       User     @relation(fields: [userId], references: [id])
+}
+
+
+model User {
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  nome      String
+  email     String        @unique
+  senha     String
+  publicacoes Publicacao[]
 }
