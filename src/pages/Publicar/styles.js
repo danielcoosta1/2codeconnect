@@ -14,7 +14,18 @@ export const ContainerMainPublicar = styled.section`
   }
 `;
 
-export const ContainerEsquerdo = styled.div``;
+export const ContainerEsquerdo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+export const ContainerBtInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #888888;
+`;
 
 export const ContainerImgUpload = styled.div`
   background-color: #888888;
@@ -24,9 +35,27 @@ export const ImgUpload = styled.img`
   width: 450px;
 `;
 
-export const UploadButton = styled.button``;
+export const UploadButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  font-size: 1rem;
+  color: #888888;
+  padding: 1em 1.5em;
+  background-color: transparent;
+  border: 2px solid #888888;
+  border-radius: 8px;
+`;
 
-export const ContainerInfoImgUpload = styled.div``;
+export const ContainerInfoImgUpload = styled.div`
+  display: flex;
+  gap: 0.5em;
+
+  img {
+    margin-bottom: 1em;
+  }
+`;
 
 export const ContainerDireito = styled.section`
   width: 50%;
@@ -76,7 +105,7 @@ export const ContainerBotoes = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  
+
   width: 100%;
   font-weight: bold;
 `;
@@ -112,7 +141,7 @@ export const BotaoDescartar = styled.button`
 `;
 
 export const BotaoPublicar = styled.button`
-width: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
