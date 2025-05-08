@@ -11,6 +11,6 @@ export const ContainerEstilizado = styled.div`
 
   main {
     flex: 1;
-    padding: 2rem;
+
   }
 `;
