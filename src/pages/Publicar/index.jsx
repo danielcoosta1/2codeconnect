@@ -1,5 +1,9 @@
 import ContainerMain from "../../components/ContainerMain";
+
 import {
+    BotaoDescartar,
+  BotaoPublicar,
+  ContainerBotoes,
   ContainerDireito,
   ContainerEsquerdo,
   ContainerImgUpload,
@@ -8,10 +12,15 @@ import {
   ContainerMainPublicar,
   ContainerTags,
   ImgUpload,
+  InputDescricaoProjeto,
+  InputNomeProjeto,
   Tags,
   UploadButton,
 } from "./styles";
-import imgDefault from "./assets/img-default-upload.png"
+
+import imgDefault from "./assets/img-default-upload.png";
+import iconeTrash from "./assets/icones/trash.svg";
+import arrowForward from "./assets/icones/arrow_forward.svg";
 const Publicar = () => {
   return (
     <ContainerMain>
@@ -29,16 +38,30 @@ const Publicar = () => {
         <ContainerDireito>
           <h2>Novo projeto</h2>
           <ContainerInfoProjeto>
-            <label>Nome do projeto</label>
-            <input type="text" />
-            <label>Descrição</label>
-            <textarea />
+            <InputNomeProjeto>
+              <label htmlFor="nomeProjeto">Nome do projeto</label>
+              <input id="nomeProjeto" type="text" />
+            </InputNomeProjeto>
+            <InputDescricaoProjeto>
+              <label>Descrição</label>
+              <textarea />
+            </InputDescricaoProjeto>
           </ContainerInfoProjeto>
           <ContainerTags>
             <h2>Tags</h2>
             <input type="text" />
             <Tags></Tags>
           </ContainerTags>
+          <ContainerBotoes>
+            <BotaoDescartar>
+              <p>Descartar</p>
+              <img src={iconeTrash} />
+            </BotaoDescartar>
+            <BotaoPublicar>
+              <p>Publicar</p>
+              <img src={arrowForward} />
+            </BotaoPublicar>
+          </ContainerBotoes>
         </ContainerDireito>
       </ContainerMainPublicar>
     </ContainerMain>
