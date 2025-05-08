@@ -54,6 +54,7 @@ export const ContainerInfoImgUpload = styled.div`
 
   img {
     margin-bottom: 1em;
+    cursor: pointer;
   }
 `;
 
