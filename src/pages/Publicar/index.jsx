@@ -10,11 +10,11 @@ import {
   ContainerImgUpload,
   ContainerInfoImgUpload,
   ContainerInfoProjeto,
+  ContainerInputDescricao,
+  ContainerInputNome,
   ContainerMainPublicar,
   ContainerTags,
   ImgUpload,
-  InputDescricaoProjeto,
-  InputNomeProjeto,
   Tags,
   UploadButton,
 } from "./styles";
@@ -25,7 +25,7 @@ import imgDefault from "./assets/img-default-upload.png";
 import iconeTrash from "./assets/icones/trash.svg";
 import arrowForward from "./assets/icones/arrow_forward.svg";
 import arrowUpload from "./assets/icones/arrow_upload.svg";
-import iconeClose from "./assets/icones/close.svg"
+import iconeClose from "./assets/icones/close.svg";
 
 const Publicar = () => {
   return (
@@ -49,14 +49,14 @@ const Publicar = () => {
         <ContainerDireito>
           <h2>Novo projeto</h2>
           <ContainerInfoProjeto>
-            <InputNomeProjeto>
+            <ContainerInputNome>
               <label htmlFor="nomeProjeto">Nome do projeto</label>
               <input id="nomeProjeto" type="text" />
-            </InputNomeProjeto>
-            <InputDescricaoProjeto>
+            </ContainerInputNome>
+            <ContainerInputDescricao>
               <label>Descrição</label>
               <textarea />
-            </InputDescricaoProjeto>
+            </ContainerInputDescricao>
           </ContainerInfoProjeto>
           <ContainerTags>
             <h2>Tags</h2>

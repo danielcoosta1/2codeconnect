@@ -76,12 +76,12 @@ export const ContainerInfoProjeto = styled.div`
   gap: 0.75rem;
 `;
 
-export const InputNomeProjeto = styled.div`
+export const ContainerInputNome = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const InputDescricaoProjeto = styled.div`
+export const ContainerInputDescricao = styled.div`
   display: flex;
   flex-direction: column;
   textarea {
