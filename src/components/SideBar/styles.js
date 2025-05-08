@@ -10,6 +10,7 @@ export const SidebarContainer = styled.aside`
   flex-direction: column;
   gap: 5rem;
   padding: 2rem 1rem;
+  border-radius: 8px;
 `;
 
 export const Nav = styled.nav``;
