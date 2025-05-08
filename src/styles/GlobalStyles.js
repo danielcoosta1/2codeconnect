@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   /* Fonte padrão */
   body {
     font-family: "Inter", sans-serif;
+    background-color: black;
 
   }
 
