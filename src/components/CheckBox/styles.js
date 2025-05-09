@@ -9,7 +9,7 @@ export const CheckboxContainer = styled.label`
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   border: 0;
   clip: rect(0 0 0 0);
-  clippath: inset(50%);
+
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -31,7 +31,7 @@ export const CustomCheckbox = styled.span`
   position: relative;
 
   &::after {
-    content: '${(props) => (props.checked ? "✔" : "")}';
+    content: "${(props) => (props.checked ? "✔" : "")}";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,7 +44,6 @@ export const CustomCheckbox = styled.span`
     box-shadow: 0 0 0 2px #00ff8855;
   }
 `;
-
 
 export const LabelText = styled.span`
   color: white;
