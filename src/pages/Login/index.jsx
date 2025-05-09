@@ -1,16 +1,27 @@
 import {
   CampoInput,
+  CheckLembrar,
   ContainerContent,
   ContainerDireita,
   ContainerEsquerda,
   ContainerInputs,
+  ContainerLembrarEsqueci,
   ContainerLoginDigitado,
   ContainerWrapper,
+  InputCheckBox,
+  LembrarButton,
 } from "./styles";
 
 import imgLogin from "./assets/img_login.png";
+import { useState } from "react";
 
 const Login = () => {
+  const [lembrarMe, setLembrarMe] = useState(false);
+
+  const toggleLembrarMe = () => {
+    setLembrarMe((prev) => !prev); // alterna entre true e false
+  };
+
   return (
     <ContainerWrapper>
       <ContainerContent>
@@ -31,6 +42,17 @@ const Login = () => {
                 <input id="senha" type="password" />
               </CampoInput>
             </ContainerInputs>
+            <ContainerLembrarEsqueci>
+              <CheckLembrar>
+                <InputCheckBox
+                  type="checkbox"
+                  checked={lembrarMe}
+                  onChange={toggleLembrarMe}
+                />
+                <LembrarButton onClick={toggleLembrarMe}>Lembrar-me</LembrarButton>
+              </CheckLembrar>
+              <p>Esqueci a senha</p>
+            </ContainerLembrarEsqueci>
           </ContainerLoginDigitado>
         </ContainerDireita>
       </ContainerContent>
