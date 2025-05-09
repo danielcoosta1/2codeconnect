@@ -13,7 +13,9 @@ export const SidebarContainer = styled.aside`
   border-radius: 8px;
 `;
 
-export const Nav = styled.nav``;
+export const Nav = styled.nav`
+width: 100%
+`;
 
 export const ListaNav = styled.ul`
   display: flex;
@@ -27,6 +29,9 @@ export const ListaNav = styled.ul`
 `;
 
 export const ItemListaNav = styled.li`
+display: flex;
+flex-direction: column;
+align-items: center;
   a {
     color: #888888;
     text-decoration: none;
@@ -50,6 +55,8 @@ export const ItemListaNav = styled.li`
       }
     }
   }
+
+ 
 `;
 
 
