@@ -16,7 +16,7 @@ model Publicacao {
   userId    String   @db.ObjectId
 }
 
-model User {
+model Usuario {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   nome  String
   email String @unique
