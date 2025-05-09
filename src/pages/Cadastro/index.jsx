@@ -121,7 +121,7 @@ const Cadastro = () => {
             <p>
               {" "}
               Você foi cadastrado com sucesso! Agora, você pode fazer login e
-              navegar na plataform!
+              navegar na plataforma!
             </p>
 
             <BotaoAlternativo onClick={() => navigate("/login")}>
