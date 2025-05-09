@@ -1,4 +1,4 @@
-import localStorageService from "../../services/localStorageService";
+import { localStorageService } from "../../services/localStorageService";
 
 export const loginUsuario = async (credenciais) => {
   const resposta = await fetch("http://localhost:3001/usuarios/login", {
