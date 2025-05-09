@@ -25,7 +25,7 @@ import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
   const links = [
-    { name: "Feed", path: "/", src: feedIcon, src2: feedIconWhite },
+    { name: "Feed", path: "/feed", src: feedIcon, src2: feedIconWhite },
     {
       name: "Perfil",
       path: "/perfil",
