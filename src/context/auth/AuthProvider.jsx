@@ -1,9 +1,10 @@
 // src/context/auth/AuthProvider.jsx
 import { useReducer } from "react";
-import { AuthContext } from "./AuthContext";
+
 import { authReducer } from "./authReducer";
 import { initialState } from "./inicialState";
 import { loginUsuario, logoutUsuario } from "./authService";
+import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
