@@ -22,23 +22,39 @@ import accountIconWhite from "./assets/account_circlewhite.svg";
 import infoIconWhite from "./assets/infowhite.svg";
 
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 const SideBar = () => {
+  const { logout } = useAuth();
   const links = [
-    { name: "Feed", path: "/feed", src: feedIcon, src2: feedIconWhite },
+    {
+      name: "Feed",
+      path: "/feed",
+      src: feedIcon,
+      src2: feedIconWhite,
+      onclick: null,
+    },
     {
       name: "Perfil",
       path: "/perfil",
       src: accountIcon,
       src2: accountIconWhite,
+      onclick: null,
     },
     {
       name: "Sobre nós",
       path: "/promocoes",
       src: infoIcon,
       src2: infoIconWhite,
+      onclick: null,
     },
-    { name: "Sair", path: "/login", src: logoutIcon, src2: null },
+    {
+      name: "Sair",
+      path: "/login",
+      src: logoutIcon,
+      src2: null,
+      onclick: logout,
+    },
   ];
 
   return (
@@ -58,6 +74,7 @@ const SideBar = () => {
               <NavLink
                 to={link.path}
                 className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={link.onclick}
               >
                 {({ isActive }) => (
                   <>
