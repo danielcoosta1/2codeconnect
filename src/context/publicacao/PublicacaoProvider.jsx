@@ -1,18 +1,39 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
+import { initialState } from "./inicialState";
+import { publicaoReducer } from "./publicacaoReducer";
+import { useAuth } from "../../hooks/useAuth";
 
-import initialState from "./inicialState";
-import publicacaoReducer from  "./publicacaoReducer"
+import { PublicacoesService } from "./publicacaoService";
 
+export const PublicacoesProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(publicaoReducer, initialState);
+  const { usuario } = useAuth();
 
+  useEffect(() => {
+    const carregarPublicacoes = async () => {
+      if (usuario?.id) {
+        const publicacoes = await PublicacoesService.buscarPublicacoes(
+          usuario.id
+        );
+        dispatch({ type: "CARREGAR_PUBLICACOES", payload: publicacoes });
+      }
+    };
 
-const PublicacaoProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(publicacaoReducer, initialState);
+    carregarPublicacoes();
+  }, [usuario]);
+
+  const adicionarPublicacao = async (novaPublicacao) => {
+    const publicacaoCriada = await PublicacoesService.criarPublicacao(
+      novaPublicacao
+    );
+    dispatch({ type: "ADICIONAR_PUBLICACAO", payload: publicacaoCriada });
+  };
 
   return (
-    <PublicacaoContext.Provider value={{ state, dispatch }}>
+    <PublicacoesContext.Provider
+      value={{ publicacoes: state.publicacoes, adicionarPublicacao }}
+    >
       {children}
-    </PublicacaoContext.Provider>
+    </PublicacoesContext.Provider>
   );
 };
-
-export default PublicacaoProvider;
