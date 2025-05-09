@@ -25,13 +25,13 @@ export const ContainerDireita = styled.div`
 export const FormularioLogin = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+
 `;
 
 export const ContainerLoginDigitado = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+
 
   h1 {
     font-size: 2rem;
@@ -66,7 +66,7 @@ export const ContainerLembrarEsqueci = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  margin-top: 1rem;
   p {
     text-decoration: underline;
     font-size: 1rem;

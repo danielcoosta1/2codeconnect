@@ -20,6 +20,8 @@ import Checkbox from "../../components/CheckBox";
 import { useAuth } from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { toastErro, toastSucesso } from "../../utils/toast";
+
 const Login = () => {
   const [lembrarMe, setLembrarMe] = useState(false);
 
@@ -47,10 +49,12 @@ const Login = () => {
 
     try {
       await login({ email, senha });
-      navigate(from, { replace: true });
+      toastSucesso("Login efetuado com sucesso");
+      // navigate(from, { replace: true });
     } catch (err) {
       console.error("Erro ao fazer login:", err.message);
       setErro("E-mail ou senha inválidos.");
+      toastErro("E-mail ou senha inválidos.");
     } finally {
       setCarregando(false);
     }
@@ -66,6 +70,7 @@ const Login = () => {
           <ContainerLoginDigitado>
             <h1>Login</h1>
             <p>Boas-vindas! Faça seu login</p>
+            {erro && <p style={{ color: "red", marginTop: "1rem" }}>{erro}</p>}
             <FormularioLogin onSubmit={handleSubmit}>
               <ContainerInputs>
                 <CampoInput>
@@ -98,6 +103,7 @@ const Login = () => {
                 />
                 <p>Esqueci a senha</p>
               </ContainerLembrarEsqueci>
+
               <ButtonSubmitLogin type="submit" disabled={carregando}>
                 {carregando ? <>🔄 Entrando...</> : "Entrar"}
                 <img src={iconeArrowForward} />
