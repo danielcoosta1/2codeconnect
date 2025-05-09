@@ -80,17 +80,28 @@ export const ButtonSubmitCadastro = styled.button`
 `;
 
 export const ContainerSucesso = styled.section`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  min-height: 30rem;
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    text-align: center;
+  }
 `;
 
 export const BotaoAlternativo = styled.button`
   padding: 12px;
-  background-color: #ffa724;
-  color: white;
-  font-size: 16px;
+  background-color: #81fe88;
+  color: #132e35;
+  font-size: 1.5rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -99,6 +110,7 @@ export const BotaoAlternativo = styled.button`
   margin-top: 1rem;
 
   &:hover {
-    background-color: #ff8c00;
+    background-color: #6ae875;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 `;
