@@ -13,7 +13,7 @@ import {
 
 import imgLogin from "./assets/img_login.png";
 
-import iconeArrowForward from "./assets/icones/forward_login.svg";
+import iconeArrowForward from "../assets/forward_arrow.svg";
 import { useState } from "react";
 import Checkbox from "../../components/CheckBox";
 
@@ -87,7 +87,6 @@ const Login = () => {
                   <label htmlFor="senha">Senha </label>
                   <input
                     type="password"
-                    placeholder="Digite sua senha"
                     value={senha}
                     id="senha"
                     onChange={(e) => setSenha(e.target.value)}
