@@ -22,6 +22,12 @@ export const ContainerDireita = styled.div`
   color: #ffffff;
 `;
 
+export const FormularioLogin = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
 export const ContainerLoginDigitado = styled.div`
   display: flex;
   flex-direction: column;
@@ -73,6 +79,22 @@ export const CheckLembrar = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5em;
+`;
+
+export const ButtonSubmitLogin = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.25rem;
+  background-color: #81fe88;
+  color: #132e35;
+  border: none;
+  padding: 0.5em 1em;
+  font-weight: 600;
+  border-radius: 8px;
+
+  margin-top: 2rem;
 `;
 
 export const ContainerLoginContas = styled.div``;
