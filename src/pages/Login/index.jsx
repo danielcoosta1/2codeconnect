@@ -40,7 +40,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/feed";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +50,7 @@ const Login = () => {
     try {
       await login({ email, senha });
       toastSucesso("Login efetuado com sucesso");
+      navigate(from, { replace: true });
       // navigate(from, { replace: true });
     } catch (err) {
       console.error("Erro ao fazer login:", err.message);
