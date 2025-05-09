@@ -78,3 +78,27 @@ export const ButtonSubmitCadastro = styled.button`
 
   margin-top: 2rem;
 `;
+
+export const ContainerSucesso = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
+
+export const BotaoAlternativo = styled.button`
+  padding: 12px;
+  background-color: #ffa724;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: #ff8c00;
+  }
+`;
