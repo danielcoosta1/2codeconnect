@@ -1,6 +1,6 @@
 import {
   CampoInput,
-  CheckLembrar,
+
   ContainerContent,
   ContainerDireita,
   ContainerEsquerda,
@@ -8,8 +8,7 @@ import {
   ContainerLembrarEsqueci,
   ContainerLoginDigitado,
   ContainerWrapper,
-  InputCheckBox,
-  LembrarButton,
+
 } from "./styles";
 
 import imgLogin from "./assets/img_login.png";
@@ -43,14 +42,7 @@ const Login = () => {
               </CampoInput>
             </ContainerInputs>
             <ContainerLembrarEsqueci>
-              <CheckLembrar>
-                <InputCheckBox
-                  type="checkbox"
-                  checked={lembrarMe}
-                  onChange={toggleLembrarMe}
-                />
-                <LembrarButton onClick={toggleLembrarMe}>Lembrar-me</LembrarButton>
-              </CheckLembrar>
+         
               <p>Esqueci a senha</p>
             </ContainerLembrarEsqueci>
           </ContainerLoginDigitado>
