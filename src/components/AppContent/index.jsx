@@ -7,6 +7,8 @@ import Perfil from "../../pages/Perfil";
 import SobreNos from "../../pages/SobreNos";
 import { Route, Routes } from "react-router-dom";
 
+import RotaPrivada from "../RotaPrivada";
+
 const AppContent = () => {
   return (
     <>
@@ -24,10 +26,13 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
 
-        <Route path="/feed" element={<Feed />} />
-        <Route path="/publicar" element={<Publicar />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/sobrenos" element={<SobreNos />} />
+        {/* Rotas protegidas */}
+        <Route element={<RotaPrivada />}>
+          <Route path="/feed" element={<Feed />} />
+          <Route path="/publicar" element={<Publicar />} />
+          <Route path="/perfil" element={<Perfil />} />
+          <Route path="/sobrenos" element={<SobreNos />} />
+        </Route>
       </Routes>
     </>
   );
