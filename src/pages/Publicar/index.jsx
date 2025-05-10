@@ -21,12 +21,14 @@ import {
 
 import imgDefault from "./assets/img-default-upload.png";
 
+
+
 //ICONES
 import iconeTrash from "./assets/icones/trash.svg";
 import arrowForward from "./assets/icones/arrow_forward.svg";
 import arrowUpload from "./assets/icones/arrow_upload.svg";
 import iconeClose from "./assets/icones/close.svg";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Publicar = () => {
   //CONTEXTO IMAGEM
@@ -67,10 +69,53 @@ const Publicar = () => {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(imagemSelecionada, nome, descricao);
+  //CONTEXTO TAG
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState("");
+  const [allTags, setAllTags] = useState([]);
+
+  useEffect(() => {
+    fetch("/mocks/tags.json")
+      .then((res) => res.json())
+      .then((data) => setAllTags(data))
+      .catch((err) => console.error("Erro ao carregar as tags:", err));
+  }, []);
+
+  const [erroTag, setErroTag] = useState("");
+
+  const lidarComKeyDown = (e) => {
+    if (e.key !== "Enter") return;
+
+    e.preventDefault(); // Evita quebra de linha
+
+    const novaTag = tagInput.trim();
+
+    if (!novaTag) {
+      setErroTag("A tag não pode estar vazia.");
+      return;
+    }
+
+    if (tags.includes(novaTag)) {
+      setErroTag("Essa tag já foi adicionada.");
+      return;
+    }
+
+    if (tags.length >= 4) {
+      setErroTag("Você só pode adicionar até 4 tags.");
+      return;
+    }
+
+    if (!allTags.includes(novaTag)) {
+      setErroTag("Essa tag não é válida.");
+      return;
+    }
+
+    setTags((prev) => [...prev, novaTag]);
+    setTagInput("");
+    setErroTag(""); // limpa erro
   };
+
+  ///////
 
   return (
     <ContainerMain>
@@ -130,15 +175,42 @@ const Publicar = () => {
           </ContainerInfoProjeto>
           <ContainerTags>
             <h2>Tags</h2>
-            <input type="text" />
-            <Tags></Tags>
+            <input
+              type="text"
+              id="tags"
+              value={tagInput}
+              required
+              onChange={(e) => setTagInput(e.target.value)}
+              onKeyDown={lidarComKeyDown}
+            />
+
+            {erroTag && (
+              <p style={{ color: "red", marginTop: "4px" }}>{erroTag}</p>
+            )}
+
+            {tags.length > 0 && (
+              <Tags>
+                {tags.map((tag, index) => (
+                  <span key={index}>
+                    {tag}
+                    <button
+                      onClick={() => setTags(tags.filter((t) => t !== tag))}
+                      style={{ marginLeft: "4px", cursor: "pointer" }}
+                    >
+                      x
+                    </button>
+                  </span>
+                ))}
+              </Tags>
+            )}
           </ContainerTags>
+
           <ContainerBotoes>
             <BotaoDescartar>
               <p>Descartar</p>
               <img src={iconeTrash} alt="ícone de lixeira" />
             </BotaoDescartar>
-            <BotaoPublicar onClick={handleSubmit}>
+            <BotaoPublicar>
               <p>Publicar</p>
               <img
                 src={arrowForward}
