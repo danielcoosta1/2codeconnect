@@ -29,6 +29,7 @@ import iconeClose from "./assets/icones/close.svg";
 import { useRef, useState } from "react";
 
 const Publicar = () => {
+  //CONTEXTO IMAGEM
   const [imagemSelecionada, setImagemSelecionada] = useState(null);
   const [nomeArquivo, setNomeArquivo] = useState("");
   const inputRef = useRef();
@@ -61,6 +62,16 @@ const Publicar = () => {
     setNomeArquivo("");
     inputRef.current.value = ""; // limpa o input file
   };
+
+  //CONTEXTO - INFORMAÇÕES DO PROJETO(NOME E DESCRIÇÃO)
+  const [nome, setNome] = useState("");
+  const [descricao, setDescricao] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(imagemSelecionada, nome, descricao);
+  };
+
   return (
     <ContainerMain>
       <ContainerMainPublicar>
@@ -98,12 +109,23 @@ const Publicar = () => {
           <h2>Novo projeto</h2>
           <ContainerInfoProjeto>
             <ContainerInputNome>
-              <label htmlFor="nomeProjeto">Nome do projeto</label>
-              <input id="nomeProjeto" type="text" />
+              <label htmlFor="nome">Nome do projeto</label>
+              <input
+                type="text"
+                id="nome"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                required
+              />
             </ContainerInputNome>
             <ContainerInputDescricao>
-              <label>Descrição</label>
-              <textarea />
+              <label htmlFor="descricao">Descrição</label>
+              <textarea
+                id="descricao"
+                value={descricao}
+                onChange={(e) => setDescricao(e.target.value)}
+                required
+              />
             </ContainerInputDescricao>
           </ContainerInfoProjeto>
           <ContainerTags>
@@ -116,7 +138,7 @@ const Publicar = () => {
               <p>Descartar</p>
               <img src={iconeTrash} alt="ícone de lixeira" />
             </BotaoDescartar>
-            <BotaoPublicar>
+            <BotaoPublicar onClick={handleSubmit}>
               <p>Publicar</p>
               <img
                 src={arrowForward}
