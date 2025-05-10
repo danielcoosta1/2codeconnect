@@ -34,7 +34,7 @@ const Publicar = () => {
   const inputRef = useRef();
 
   const lidarComUpload = (e) => {
-    const arquivo = event.target.files[0];
+    const arquivo = e.target.files[0];
 
     if (!arquivo) return;
 
