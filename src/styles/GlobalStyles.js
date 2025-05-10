@@ -7,11 +7,13 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Prompt", sans-serif;
   }
 
   /* Fonte padrão */
   body {
     font-family: "Inter", sans-serif;
+    background-color: black;
 
   }
 
