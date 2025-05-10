@@ -66,17 +66,32 @@ const Publicar = () => {
       <ContainerMainPublicar>
         <ContainerEsquerdo>
           <ContainerImgUpload>
-            <ImgUpload src={imgDefault} />
+            <ImgUpload src={imagemSelecionada || imgDefault} />
           </ContainerImgUpload>
           <ContainerBtInfo>
-            <UploadButton>
+            <UploadButton onClick={() => inputRef.current.click()}>
               <p>Carregar Imagem</p>
               <img src={arrowUpload} />
+              <input
+                type="file"
+                accept="image/*"
+                ref={inputRef}
+                onChange={lidarComUpload}
+                style={{ display: "none" }}
+              />
             </UploadButton>
-            <ContainerInfoImgUpload>
-              <p>image_projeto.png</p>
-              <img src={iconeClose} />
-            </ContainerInfoImgUpload>
+
+            {imagemSelecionada && (
+              <ContainerInfoImgUpload>
+                <p>{nomeArquivo}</p>
+                <img
+                  src={iconeClose}
+                  alt="Fechar imagem"
+                  onClick={removerImagem}
+                  style={{ cursor: "pointer" }}
+                />
+              </ContainerInfoImgUpload>
+            )}
           </ContainerBtInfo>
         </ContainerEsquerdo>
         <ContainerDireito>
