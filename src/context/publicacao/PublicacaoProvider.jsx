@@ -12,6 +12,7 @@ export const PublicacoesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(publicacaoReducer, initialState);
   const { usuario } = useAuth();
 
+  //Atualiza publicacao
   useEffect(() => {
     if (!usuario?.id) {
       // Se não houver usuário, você pode lidar com a situação aqui
@@ -34,9 +35,12 @@ export const PublicacoesProvider = ({ children }) => {
     carregarPublicacoes();
   }, [usuario]);
 
+  //Salva publicacao no localStorage
   useEffect(() => {
     localStorageService.salvar("publicacoes", state.publicacoes);
   }, [state.publicacoes]);
+
+  //Ações
 
   const adicionarPublicacao = async (novaPublicacao) => {
     const publicacaoCriada = await PublicacoesService.criarPublicacao(
@@ -72,13 +76,18 @@ export const PublicacoesProvider = ({ children }) => {
   return (
     <PublicacaoContext.Provider
       value={{
-        ...state,
-        adicionarPublicacao,
+        imagem: state.imagem,
+        nomeArquivo: state.nomeArquivo,
+        nome: state.nome,
+        descricao: state.descricao,
+        tags: state.tags, // ← importante!
+        tagInput: state.tagInput,
         atualizarCampo,
         removerImagem,
         adicionarTag,
         removerTag,
         limparTags,
+        adicionarPublicacao,
         limparPublicacao,
       }}
     >
