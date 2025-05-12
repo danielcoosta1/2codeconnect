@@ -18,6 +18,10 @@ router.get("/:userId", async (req, res) => {
       where: { userId },
     });
 
+    if (!publicacoes) {
+      return res.status(200).json({ publicacoes: [] });
+    }
+
     return res.status(200).json({ publicacoes });
   } catch (erro) {
     console.error("Erro ao buscar publicações:", erro);
@@ -26,21 +30,31 @@ router.get("/:userId", async (req, res) => {
 });
 
 // POST: Criar nova publicação
-router.post("/", async (req, res) => {
-  const { userId, titulo, categoria, descricao, imagem } = req.body;
+// routes/publicacoes.js
+router.post("/:userId", async (req, res) => {
+  
+  const { userId } = req.params;
+  const { publicacao } = req.body;
 
-  if (!userId || !titulo || !categoria || !descricao || !imagem) {
-    return res.status(400).json({ error: "Todos os campos são obrigatórios." });
+  if (!publicacao) {
+    return res.status(400).json({ error: "publicacao no body é obrigatório." });
   }
 
   try {
     const novaPublicacao = await prisma.publicacao.create({
-      data: { userId, titulo, categoria, descricao, imagem },
+      data: {
+        userId,
+        nome: publicacao.nome,
+        descricao: publicacao.descricao,
+        imagem: publicacao.imagem,
+        nomeArquivo: publicacao.nomeArquivo, // só se você adicionou no schema
+        tags: publicacao.tags,
+      },
     });
 
     return res.status(201).json(novaPublicacao);
   } catch (erro) {
-    console.error("Erro ao criar publicação:", erro);
+    console.error("Erro ao criar a publicação:", erro);
     return res.status(500).json({ error: "Erro ao criar publicação." });
   }
 });
