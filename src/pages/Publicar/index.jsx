@@ -119,7 +119,15 @@ const Publicar = () => {
     setErroTag(""); // limpa erro
   };
 
+  //Verifica se há tags
   const haTags = tags.length > 0;
+
+  //Função de limpar todas as tags
+  const limparTags = () => {
+    if (window.confirm("Você quer limpar todas as tags?")){
+      setTags([]);
+    } return;
+  }
 
   ///////
 
@@ -183,7 +191,7 @@ const Publicar = () => {
             <TituloTags>
               <h2>Tags</h2>
               {haTags && (
-                <LimparTags>
+                <LimparTags onClick={limparTags}>
                   {" "}
                   <AiOutlineClear size={25} /> Limpar tags
                 </LimparTags>
