@@ -15,16 +15,19 @@ import {
   ContainerMainPublicar,
   ContainerTags,
   ImgUpload,
+  LimparTags,
+  Tag,
   Tags,
+  TituloTags,
   UploadButton,
 } from "./styles";
 
 import imgDefault from "./assets/img-default-upload.png";
 
-
-
 //ICONES
 import iconeTrash from "./assets/icones/trash.svg";
+import { IoMdClose } from "react-icons/io";
+import { AiOutlineClear } from "react-icons/ai";
 import arrowForward from "./assets/icones/arrow_forward.svg";
 import arrowUpload from "./assets/icones/arrow_upload.svg";
 import iconeClose from "./assets/icones/close.svg";
@@ -74,6 +77,7 @@ const Publicar = () => {
   const [tagInput, setTagInput] = useState("");
   const [allTags, setAllTags] = useState([]);
 
+  //resgatar os dados da mocks atraves de um
   useEffect(() => {
     fetch("/mocks/tags.json")
       .then((res) => res.json())
@@ -111,9 +115,11 @@ const Publicar = () => {
     }
 
     setTags((prev) => [...prev, novaTag]);
-    setTagInput("");
+    setTagInput(""); // Limpa o input digitado pelo UI
     setErroTag(""); // limpa erro
   };
+
+  const haTags = tags.length > 0;
 
   ///////
 
@@ -174,7 +180,16 @@ const Publicar = () => {
             </ContainerInputDescricao>
           </ContainerInfoProjeto>
           <ContainerTags>
-            <h2>Tags</h2>
+            <TituloTags>
+              <h2>Tags</h2>
+              {haTags && (
+                <LimparTags>
+                  {" "}
+                  <AiOutlineClear size={25} /> Limpar tags
+                </LimparTags>
+              )}
+            </TituloTags>
+
             <input
               type="text"
               id="tags"
@@ -191,15 +206,17 @@ const Publicar = () => {
             {tags.length > 0 && (
               <Tags>
                 {tags.map((tag, index) => (
-                  <span key={index}>
-                    {tag}
-                    <button
-                      onClick={() => setTags(tags.filter((t) => t !== tag))}
-                      style={{ marginLeft: "4px", cursor: "pointer" }}
-                    >
-                      x
-                    </button>
-                  </span>
+                  <Tag>
+                    <span key={index}>
+                      {tag}
+                      <button
+                        onClick={() => setTags(tags.filter((t) => t !== tag))}
+                        style={{ marginLeft: "4px", cursor: "pointer" }}
+                      >
+                        <IoMdClose size={20} />
+                      </button>
+                    </span>
+                  </Tag>
                 ))}
               </Tags>
             )}
