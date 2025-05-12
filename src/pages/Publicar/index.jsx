@@ -78,9 +78,13 @@ const Publicar = () => {
       return;
     }
 
-    const imagemUrl = URL.createObjectURL(arquivo);
-    atualizarCampo("imagem", imagemUrl);
-    atualizarCampo("nomeArquivo", arquivo.name);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result; // string "data:image/png;base64,iVBORw0KGgoAAAANS..."
+      atualizarCampo("imagem", base64); // salva no contexto
+      atualizarCampo("nomeArquivo", arquivo.name);
+    };
+    reader.readAsDataURL(arquivo);
   };
 
   const lidarComKeyDown = (e) => {
@@ -112,10 +116,10 @@ const Publicar = () => {
       imagem,
       nomeArquivo,
       tags,
-      data: new Date().toISOString(),
     };
 
     adicionarPublicacao(novaPublicacao);
+
     limparPublicacao();
     alert("Publicação realizada com sucesso!");
   };
