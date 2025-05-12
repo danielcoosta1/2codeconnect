@@ -98,8 +98,60 @@ export const ContainerTags = styled.div`
   flex-direction: column;
   gap: 1em;
 `;
+export const TituloTags = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
-export const Tags = styled.div``;
+export const Tags = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+`;
+
+export const LimparTags = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #888888;
+  background-color: transparent;
+  border: 2px solid #888888;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #888888;
+    border-color: #ffffff;
+  }
+
+  svg {
+    margin-bottom: 2px;
+  }
+`;
+
+export const Tag = styled.li`
+  background-color: #888888;
+  padding: 0.3em .5em;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
+
+  span {
+    font-size: 1.25rem;
+    color: #171d1f;
+  }
+`;
 
 export const ContainerBotoes = styled.div`
   display: flex;

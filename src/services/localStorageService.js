@@ -10,7 +10,8 @@ export const localStorageService = {
   ler(key) {
     try {
       const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : null;
+      if (!item || item === "undefined" || item === "null") return null;
+      return JSON.parse(item);
     } catch (error) {
       console.error("Erro ao ler do localStorage:", error);
       return null;

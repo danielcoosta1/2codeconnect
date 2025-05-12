@@ -1,4 +1,3 @@
-// services/PublicacoesService.js
 import axios from "axios";
 
 const BASE_URL = "http://localhost:3001/publicacoes";
@@ -9,7 +8,8 @@ export const PublicacoesService = {
     return resposta.data?.publicacoes || [];
   },
 
-  async criarPublicacao(publicacao) {
-    return await axios.post(BASE_URL, publicacao);
+  async criarPublicacao(userId, publicacao) {
+   const resposta = await axios.post(`${BASE_URL}/${userId}`, { publicacao });
+   return resposta.data;
   },
 };
