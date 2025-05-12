@@ -5,7 +5,7 @@ import { publicacaoReducer } from "./publicacaoReducer";
 
 import { initialState } from "./inicialState";
 import { useAuth } from "../../hooks/useAuth";
-import { localStorageService } from "../../services/localStorageService";
+
 import { PublicacoesService } from "./publicacaoService";
 
 export const PublicacoesProvider = ({ children }) => {
@@ -14,16 +14,9 @@ export const PublicacoesProvider = ({ children }) => {
 
   //Atualiza publicacao
   useEffect(() => {
-    if (!usuario?.id) {
-      // Se não houver usuário, você pode lidar com a situação aqui
-      return;
-    }
-    const carregarPublicacoes = async () => {
-      const armazenadas = localStorageService.ler("publicacoes");
-      if (armazenadas) {
-        dispatch({ type: "CARREGAR_PUBLICACOES", payload: armazenadas });
-      }
+    if (!usuario?.id) return;
 
+    const carregarPublicacoes = async () => {
       if (usuario?.id) {
         const publicacoes = await PublicacoesService.buscarPublicacoes(
           usuario.id
@@ -34,11 +27,6 @@ export const PublicacoesProvider = ({ children }) => {
 
     carregarPublicacoes();
   }, [usuario]);
-
-  //Salva publicacao no localStorage
-  useEffect(() => {
-    localStorageService.salvar("publicacoes", state.publicacoes);
-  }, [state.publicacoes]);
 
   //Ações
 
