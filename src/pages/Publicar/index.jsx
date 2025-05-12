@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import ContainerMain from "../../components/ContainerMain";
+import usePublicacao from "../../hooks/usePublicacao";
 
 import {
   BotaoDescartar,
@@ -24,60 +26,34 @@ import {
 
 import imgDefault from "./assets/img-default-upload.png";
 
-//ICONES
-import iconeTrash from "./assets/icones/trash.svg";
-import { IoMdClose } from "react-icons/io";
-import { AiOutlineClear } from "react-icons/ai";
-import arrowForward from "./assets/icones/arrow_forward.svg";
-import arrowUpload from "./assets/icones/arrow_upload.svg";
+// Ícones
 import iconeClose from "./assets/icones/close.svg";
-import { useEffect, useRef, useState } from "react";
+import arrowUpload from "./assets/icones/arrow_upload.svg";
+import { AiOutlineClear } from "react-icons/ai";
+import { IoMdClose } from "react-icons/io";
 
 const Publicar = () => {
-  //CONTEXTO IMAGEM
-  const [imagemSelecionada, setImagemSelecionada] = useState(null);
-  const [nomeArquivo, setNomeArquivo] = useState("");
+  const {
+    imagem,
+
+    nomeArquivo,
+    nome,
+    descricao,
+    tags,
+    tagInput,
+    atualizarCampo,
+    removerImagem,
+    adicionarTag,
+    removerTag,
+    limparTags,
+    adicionarPublicacao,
+    limparPublicacao,
+  } = usePublicacao();
+
   const inputRef = useRef();
-
-  const lidarComUpload = (e) => {
-    const arquivo = e.target.files[0];
-
-    if (!arquivo) return;
-
-    const tiposPermitidos = ["image/jpeg", "image/png", "image/jpg"];
-
-    if (!tiposPermitidos.includes(arquivo.type)) {
-      alert("Formato inválido. Use JPEG ou PNG.");
-      return;
-    }
-
-    // Verifica o tamanho do arquivo (limite de 5MB)
-    const tamanhoMaximo = 5 * 1024 * 1024; // 5MB
-    if (arquivo.size > tamanhoMaximo) {
-      alert("Arquivo muito grande. Máximo 5MB.");
-      return;
-    }
-
-    setImagemSelecionada(URL.createObjectURL(arquivo));
-    setNomeArquivo(arquivo.name);
-  };
-
-  const removerImagem = () => {
-    setImagemSelecionada(null);
-    setNomeArquivo("");
-    inputRef.current.value = ""; // limpa o input file
-  };
-
-  //CONTEXTO - INFORMAÇÕES DO PROJETO(NOME E DESCRIÇÃO)
-  const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-
-  //CONTEXTO TAG
-  const [tags, setTags] = useState([]);
-  const [tagInput, setTagInput] = useState("");
+  const [erroTag, setErroTag] = useState("");
   const [allTags, setAllTags] = useState([]);
 
-  //resgatar os dados da mocks atraves de um
   useEffect(() => {
     fetch("/mocks/tags.json")
       .then((res) => res.json())
@@ -85,63 +61,76 @@ const Publicar = () => {
       .catch((err) => console.error("Erro ao carregar as tags:", err));
   }, []);
 
-  const [erroTag, setErroTag] = useState("");
+  const lidarComUpload = (e) => {
+    const arquivo = e.target.files[0];
+    if (!arquivo) return;
+
+    const tiposPermitidos = ["image/jpeg", "image/png", "image/jpg"];
+    const tamanhoMaximo = 5 * 1024 * 1024;
+
+    if (!tiposPermitidos.includes(arquivo.type)) {
+      alert("Formato inválido. Use JPEG ou PNG.");
+      return;
+    }
+
+    if (arquivo.size > tamanhoMaximo) {
+      alert("Arquivo muito grande. Máximo 5MB.");
+      return;
+    }
+
+    const imagemUrl = URL.createObjectURL(arquivo);
+    atualizarCampo("imagem", imagemUrl);
+    atualizarCampo("nomeArquivo", arquivo.name);
+  };
 
   const lidarComKeyDown = (e) => {
     if (e.key !== "Enter") return;
 
-    e.preventDefault(); // Evita quebra de linha
-
+    e.preventDefault();
     const novaTag = tagInput.trim();
 
-    if (!novaTag) {
-      setErroTag("A tag não pode estar vazia.");
-      return;
-    }
+    if (!novaTag) return setErroTag("A tag não pode estar vazia.");
+    if (tags && tags.includes(novaTag))
+      return setErroTag("Essa tag já foi adicionada.");
+    if (tags.length >= 4)
+      return setErroTag("Você só pode adicionar até 4 tags.");
+    if (!allTags.includes(novaTag)) return setErroTag("Essa tag não é válida.");
 
-    if (tags.includes(novaTag)) {
-      setErroTag("Essa tag já foi adicionada.");
-      return;
-    }
-
-    if (tags.length >= 4) {
-      setErroTag("Você só pode adicionar até 4 tags.");
-      return;
-    }
-
-    if (!allTags.includes(novaTag)) {
-      setErroTag("Essa tag não é válida.");
-      return;
-    }
-
-    setTags((prev) => [...prev, novaTag]);
-    setTagInput(""); // Limpa o input digitado pelo UI
-    setErroTag(""); // limpa erro
+    adicionarTag(novaTag);
+    setErroTag("");
   };
 
-  //Verifica se há tags
-  const haTags = tags.length > 0;
+  const handlePublicar = () => {
+    if (!nome || !descricao || !imagem) {
+      alert("Preencha todos os campos antes de publicar.");
+      return;
+    }
 
-  //Função de limpar todas as tags
-  const limparTags = () => {
-    if (window.confirm("Você quer limpar todas as tags?")){
-      setTags([]);
-    } return;
-  }
+    const novaPublicacao = {
+      nome,
+      descricao,
+      imagem,
+      nomeArquivo,
+      tags,
+      data: new Date().toISOString(),
+    };
 
-  ///////
+    adicionarPublicacao(novaPublicacao);
+    limparPublicacao();
+    alert("Publicação realizada com sucesso!");
+  };
 
   return (
     <ContainerMain>
       <ContainerMainPublicar>
         <ContainerEsquerdo>
           <ContainerImgUpload>
-            <ImgUpload src={imagemSelecionada || imgDefault} />
+            <ImgUpload src={imagem || imgDefault} />
           </ContainerImgUpload>
           <ContainerBtInfo>
             <UploadButton onClick={() => inputRef.current.click()}>
               <p>Carregar Imagem</p>
-              <img src={arrowUpload} />
+              <img src={arrowUpload} alt="Ícone upload" />
               <input
                 type="file"
                 accept="image/*"
@@ -151,7 +140,7 @@ const Publicar = () => {
               />
             </UploadButton>
 
-            {imagemSelecionada && (
+            {imagem && (
               <ContainerInfoImgUpload>
                 <p>{nomeArquivo}</p>
                 <img
@@ -164,84 +153,63 @@ const Publicar = () => {
             )}
           </ContainerBtInfo>
         </ContainerEsquerdo>
+
         <ContainerDireito>
           <h2>Novo projeto</h2>
           <ContainerInfoProjeto>
             <ContainerInputNome>
               <label htmlFor="nome">Nome do projeto</label>
               <input
-                type="text"
                 id="nome"
+                type="text"
                 value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                required
+                onChange={(e) => atualizarCampo("nome", e.target.value)}
               />
             </ContainerInputNome>
+
             <ContainerInputDescricao>
-              <label htmlFor="descricao">Descrição</label>
+              <label htmlFor="descricao">Descrição do projeto</label>
               <textarea
                 id="descricao"
                 value={descricao}
-                onChange={(e) => setDescricao(e.target.value)}
-                required
+                onChange={(e) => atualizarCampo("descricao", e.target.value)}
               />
             </ContainerInputDescricao>
           </ContainerInfoProjeto>
-          <ContainerTags>
-            <TituloTags>
-              <h2>Tags</h2>
-              {haTags && (
-                <LimparTags onClick={limparTags}>
-                  {" "}
-                  <AiOutlineClear size={25} /> Limpar tags
-                </LimparTags>
-              )}
-            </TituloTags>
 
+          <ContainerTags>
+            <TituloTags>Tags</TituloTags>
             <input
               type="text"
-              id="tags"
-              value={tagInput}
-              required
-              onChange={(e) => setTagInput(e.target.value)}
+              placeholder="Digite e pressione Enter"
+              value={tagInput || ""}
+              onChange={(e) => atualizarCampo("tagInput", e.target.value)}
               onKeyDown={lidarComKeyDown}
             />
-
-            {erroTag && (
-              <p style={{ color: "red", marginTop: "4px" }}>{erroTag}</p>
-            )}
-
-            {tags.length > 0 && (
-              <Tags>
-                {tags.map((tag, index) => (
-                  <Tag>
-                    <span key={index}>
+            {erroTag && <p style={{ color: "red" }}>{erroTag}</p>}
+            {tags?.length > 0 && (
+              <>
+                <Tags>
+                  {tags.map((tag, index) => (
+                    <Tag key={index}>
                       {tag}
-                      <button
-                        onClick={() => setTags(tags.filter((t) => t !== tag))}
-                        style={{ marginLeft: "4px", cursor: "pointer" }}
-                      >
-                        <IoMdClose size={20} />
-                      </button>
-                    </span>
-                  </Tag>
-                ))}
-              </Tags>
+                      <IoMdClose onClick={() => removerTag(tag)} />
+                    </Tag>
+                  ))}
+                </Tags>
+                <LimparTags onClick={limparTags}>
+                  <AiOutlineClear />
+                  Limpar todas
+                </LimparTags>
+              </>
             )}
           </ContainerTags>
 
           <ContainerBotoes>
-            <BotaoDescartar>
-              <p>Descartar</p>
-              <img src={iconeTrash} alt="ícone de lixeira" />
+            <BotaoDescartar onClick={limparPublicacao}>
+              Descartar
             </BotaoDescartar>
-            <BotaoPublicar>
-              <p>Publicar</p>
-              <img
-                src={arrowForward}
-                alt="ícone de carregamento(flesha para cima)"
-              />
-            </BotaoPublicar>
+            <BotaoPublicar onClick={handlePublicar}>Publicar</BotaoPublicar>
           </ContainerBotoes>
         </ContainerDireito>
       </ContainerMainPublicar>

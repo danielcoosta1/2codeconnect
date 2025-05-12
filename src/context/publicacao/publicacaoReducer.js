@@ -12,7 +12,7 @@ export function publicacaoReducer(state, action) {
     case "ATUALIZAR_CAMPO":
       return {
         ...state,
-        [action.payload.campo]: action.payload.valor,
+        [action.payload.campo]: action.payload.valor || "", // Garante que valores undefined sejam evitados
       };
 
     case "REMOVER_IMAGEM":

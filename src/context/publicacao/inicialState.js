@@ -1,17 +1,17 @@
 import { localStorageService } from "../../services/localStorageService";
 
 const getPublicacaoInicial = () => {
-  return (
-    localStorageService.ler("publicacoes") || {
-      publicacoes: [],
-      imagem: null,
-      nomeArquivo: "",
-      nome: "",
-      descricao: "",
-      tags: [],
-      tagInput: "",
-    }
-  );
+  const publicacoes = localStorageService.ler("publicacoes") || [];
+
+  return {
+    publicacoes,
+    imagem: null,
+    nomeArquivo: "",
+    nome: "",
+    descricao: "",
+    tags: [],
+    tagInput: "", // Garantir que a tagInput esteja sempre como string vazia
+  };
 };
 
 export const initialState = getPublicacaoInicial();
