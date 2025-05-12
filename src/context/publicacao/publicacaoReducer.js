@@ -1,4 +1,4 @@
-export function publicaoReducer(state, action) {
+export function publicacaoReducer(state, action) {
   switch (action.type) {
     case "CARREGAR_PUBLICACOES":
       return { ...state, publicacoes: action.payload };
