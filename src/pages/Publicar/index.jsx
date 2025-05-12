@@ -119,6 +119,7 @@ const Publicar = () => {
     };
 
     adicionarPublicacao(novaPublicacao);
+    
 
     limparPublicacao();
     alert("Publicação realizada com sucesso!");
