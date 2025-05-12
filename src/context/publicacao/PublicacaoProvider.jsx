@@ -44,6 +44,7 @@ export const PublicacoesProvider = ({ children }) => {
 
   const adicionarPublicacao = async (novaPublicacao) => {
     const publicacaoCriada = await PublicacoesService.criarPublicacao(
+      usuario.id,
       novaPublicacao
     );
     dispatch({ type: "ADICIONAR_PUBLICACAO", payload: publicacaoCriada });
