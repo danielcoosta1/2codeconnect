@@ -136,7 +136,7 @@ export const LimparTags = styled.button`
 
 export const Tag = styled.li`
   background-color: #888888;
-  padding: 0.5em 1em;
+  padding: 0.3em .5em;
   border-radius: 8px;
   justify-content: center;
   align-items: center;
@@ -148,7 +148,7 @@ export const Tag = styled.li`
   }
 
   span {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #171d1f;
   }
 `;
