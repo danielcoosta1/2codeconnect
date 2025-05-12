@@ -3,6 +3,8 @@ import { initialState } from "./inicialState";
 import { publicaoReducer } from "./publicacaoReducer";
 import { useAuth } from "../../hooks/useAuth";
 
+import { localStorageService } from "../../services/localStorageService";
+
 import { PublicacoesService } from "./publicacaoService";
 
 export const PublicacoesProvider = ({ children }) => {
@@ -11,6 +13,11 @@ export const PublicacoesProvider = ({ children }) => {
 
   useEffect(() => {
     const carregarPublicacoes = async () => {
+      const armazenadas = localStorageService.ler("publicacoes");
+      if (armazenadas) {
+        dispatch({ type: "CARREGAR_PUBLICACOES", payload: armazenadas });
+      }
+
       if (usuario?.id) {
         const publicacoes = await PublicacoesService.buscarPublicacoes(
           usuario.id
@@ -21,6 +28,10 @@ export const PublicacoesProvider = ({ children }) => {
 
     carregarPublicacoes();
   }, [usuario]);
+
+  useEffect(() => {
+    localStorageService.salvar("publicacoes", state.publicacoes);
+  }, [state.publicacoes]);
 
   const adicionarPublicacao = async (novaPublicacao) => {
     const publicacaoCriada = await PublicacoesService.criarPublicacao(
