@@ -18,8 +18,12 @@ model Publicacao {
 }
 
 model Usuario {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  nome  String
-  email String @unique
-  senha String
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  nome             String
+  email            String    @unique
+  senha            String
+  nomeDeUsuario    String?
+  foto             String?
+  tokenRedefinicao String?
+  tokenExpiracao   DateTime?
 }
