@@ -17,9 +17,12 @@ const EsqueciSenha = () => {
   const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
 
+  const [carregando, setCarregando] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMensagem(""); // limpa antes de enviar
+    setCarregando(true);
 
     try {
       const resposta = await fetch(
@@ -38,6 +41,8 @@ const EsqueciSenha = () => {
     } catch (erro) {
       console.error("Erro ao enviar requisição:", erro);
       setMensagem("Ocorreu um erro. Tente novamente mais tarde.");
+    } finally {
+      setCarregando(false);
     }
   };
 
@@ -61,7 +66,8 @@ const EsqueciSenha = () => {
               style={{ width: "100%", marginBottom: "1rem" }}
             />
             <ButtonSubmit type="submit">
-              Enviar <img src={iconeArrowForward} />
+              {carregando ? <>🔄 Enviando...</> : "Enviar"}{" "}
+              <img src={iconeArrowForward} />
             </ButtonSubmit>
           </Form>
           {mensagem && <p>{mensagem}</p>}

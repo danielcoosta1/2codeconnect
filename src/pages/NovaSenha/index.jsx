@@ -21,6 +21,8 @@ const NovaSenha = () => {
   const { token } = useParams();
   const navigate = useNavigate();
 
+  const [carregando, setCarregando] = useState(false);
+
   const [novaSenha, setNovaSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
@@ -29,19 +31,22 @@ const NovaSenha = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setCarregando(true);
     if (!senhasIguais) {
       return toast.error("As senhas não coincidem.");
     }
 
     try {
-      const resposta = await fetch("http://localhost:3001/usuarios/nova-senha", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token, novaSenha }),
-      });
+      const resposta = await fetch(
+        "http://localhost:3001/usuarios/nova-senha",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token, novaSenha }),
+        }
+      );
 
       const dados = await resposta.json();
 
@@ -56,6 +61,8 @@ const NovaSenha = () => {
     } catch (erro) {
       console.error(erro);
       toast.error("Erro interno.");
+    } finally {
+      setCarregando(false);
     }
   };
 
@@ -95,7 +102,8 @@ const NovaSenha = () => {
             </InputWrapper>
 
             <ButtonSubmit type="submit">
-              Salvar <img src={iconeArrowForward} alt="ícone de avançar" />
+              {carregando ? <>🔄 Salvando...</> : "Salvar"}{" "}
+              <img src={iconeArrowForward} alt="ícone de avançar" />
             </ButtonSubmit>
           </Form>
         </ContainerForm>
