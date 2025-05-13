@@ -3,6 +3,8 @@ import express from "express";
 import { PrismaClient } from "@prisma/client";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
+/* global process */
+import { enviarEmailRedefinicao } from "../../src/services/emailService";
 
 const prisma = new PrismaClient();
 const router = express.Router();
@@ -15,7 +17,9 @@ router.post("/redefinir-senha", async (req, res) => {
 
     if (!usuario) {
       // Não revela se o e-mail existe por segurança
-      return res.status(200).json({ mensagem: "Se esse e-mail existir, enviaremos o link." });
+      return res
+        .status(200)
+        .json({ mensagem: "Se esse e-mail existir, enviaremos o link." });
     }
 
     const token = crypto.randomBytes(32).toString("hex");
@@ -29,16 +33,14 @@ router.post("/redefinir-senha", async (req, res) => {
       },
     });
 
-    const link = `http://localhost:5173/nova-senha/${token}`;
-    console.log(`Link de redefinição: ${link}`); // aqui você envia por e-mail real no futuro
-
+    const link = `${process.env.FRONTEND_URL}/nova-senha/${token}`;
+    await enviarEmailRedefinicao(email, link);
     return res.status(200).json({ mensagem: "Link de redefinição enviado." });
   } catch (error) {
     console.error("Erro ao enviar link:", error);
     res.status(500).json({ erro: "Erro interno no servidor." });
   }
 });
-
 
 router.post("/nova-senha", async (req, res) => {
   const { token, novaSenha } = req.body;

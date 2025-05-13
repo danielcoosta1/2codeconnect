@@ -5,14 +5,25 @@ const EsqueciSenha = () => {
   const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setMensagem(""); // limpa antes de enviar
 
-    // Aqui seria a chamada para seu backend
-    console.log("Enviando link para:", email);
+    try {
+      const resposta = await fetch("http://localhost:3000/redefinir-senha", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
-    // Simulação de sucesso:
-    setMensagem("Se esse e-mail estiver cadastrado, enviaremos um link para redefinir sua senha.");
+      const dados = await resposta.json();
+      setMensagem(dados.mensagem);
+    } catch (erro) {
+      console.error("Erro ao enviar requisição:", erro);
+      setMensagem("Ocorreu um erro. Tente novamente mais tarde.");
+    }
   };
 
   return (
