@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
@@ -5,8 +8,8 @@ import { PrismaClient } from "@prisma/client";
 import loginRoutes from "./routes/login.js";
 import cadastroRoutes from "./routes/cadastro.js";
 import publicacaoRoutes from "./routes/publicacao.js";
-import redefinicaoSenhaRoutes from "./routes/redefinicaoSenha.js"
-
+import redefinicaoSenhaRoutes from "./routes/redefinicaoSenha.js";
+// <-- carrega as variáveis do .env
 /* global process */
 const prisma = new PrismaClient();
 
