@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
 /* global process */
-import { enviarEmailRedefinicao } from "../../src/services/emailService";
+import {enviarEmailRedefinicao} from "../services/emailService"
 
 const prisma = new PrismaClient();
 const router = express.Router();
