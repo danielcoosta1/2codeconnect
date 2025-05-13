@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 
 import RotaPrivada from "../RotaPrivada";
 import EsqueciSenha from "../../pages/EsqueciSenha";
+import NovaSenha from "../../pages/NovaSenha";
 
 const AppContent = () => {
   return (
@@ -27,6 +28,7 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/esqueci-senha" element={<EsqueciSenha />} />
+        <Route path="/nova-senha/:token" element={<NovaSenha/>} />
 
         {/* Rotas protegidas */}
         <Route element={<RotaPrivada />}>
