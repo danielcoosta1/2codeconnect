@@ -101,7 +101,12 @@ const Login = () => {
                   onChange={toggleLembrarMe}
                   label="Lembrar-me"
                 />
-                <p>Esqueci a senha</p>
+                <p
+                  onClick={() => navigate("/esqueci-senha")}
+                  style={{ cursor: "pointer"}}
+                >
+                  Esqueci minha senha
+                </p>
               </ContainerLembrarEsqueci>
 
               <ButtonSubmitLogin type="submit" disabled={carregando}>
