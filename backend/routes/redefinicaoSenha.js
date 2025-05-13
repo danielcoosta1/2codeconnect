@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
 /* global process */
-import {enviarEmailRedefinicao} from "../services/emailService"
+import {enviarEmailRedefinicao} from "../services/emailService.js"
 
 const prisma = new PrismaClient();
 const router = express.Router();
@@ -74,3 +74,6 @@ router.post("/nova-senha", async (req, res) => {
     res.status(500).json({ erro: "Erro interno no servidor." });
   }
 });
+
+
+export default router;
