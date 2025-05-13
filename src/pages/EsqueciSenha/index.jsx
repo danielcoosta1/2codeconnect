@@ -1,5 +1,17 @@
 // src/pages/EsqueciSenha.jsx
 import { useState } from "react";
+import {
+  ButtonSubmit,
+  ContainerContent,
+  ContainerForm,
+  ContainerImg,
+  ContainerWrapper,
+  Form,
+} from "./style";
+
+import imgEsqueciSenha from "./assets/img_esquecisenha.png";
+
+import iconeArrowForward from "../assets/forward_arrow.svg"
 
 const EsqueciSenha = () => {
   const [email, setEmail] = useState("");
@@ -27,22 +39,32 @@ const EsqueciSenha = () => {
   };
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "400px", margin: "auto" }}>
-      <h1>Esqueci minha senha</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Digite seu e-mail cadastrado:</label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ width: "100%", marginBottom: "1rem" }}
-        />
-        <button type="submit">Enviar link de redefinição</button>
-      </form>
-      {mensagem && <p>{mensagem}</p>}
-    </div>
+    <ContainerWrapper>
+      <ContainerContent>
+        <ContainerImg>
+          <img src={imgEsqueciSenha} />
+        </ContainerImg>
+        <ContainerForm>
+          <h1>Esqueci minha senha</h1>
+          <p>Envio de link para redefinição de senha</p>
+          <Form onSubmit={handleSubmit}>
+            <label htmlFor="email">E-mail</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+              style={{ width: "100%", marginBottom: "1rem" }}
+            />
+            <ButtonSubmit type="submit">
+              Enviar <img src={iconeArrowForward} />
+            </ButtonSubmit>
+          </Form>
+          {mensagem && <p>{mensagem}</p>}
+        </ContainerForm>
+      </ContainerContent>
+    </ContainerWrapper>
   );
 };
 
