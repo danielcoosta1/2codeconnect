@@ -11,7 +11,7 @@ import {
 
 import imgEsqueciSenha from "./assets/img_esquecisenha.png";
 
-import iconeArrowForward from "../assets/forward_arrow.svg"
+import iconeArrowForward from "../assets/forward_arrow.svg";
 
 const EsqueciSenha = () => {
   const [email, setEmail] = useState("");
@@ -22,13 +22,16 @@ const EsqueciSenha = () => {
     setMensagem(""); // limpa antes de enviar
 
     try {
-      const resposta = await fetch("http://localhost:3000/redefinir-senha", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const resposta = await fetch(
+        "http://localhost:3001/usuarios/redefinir-senha",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       const dados = await resposta.json();
       setMensagem(dados.mensagem);
