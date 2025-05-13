@@ -26,7 +26,7 @@ const AppContent = () => {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="esqueci-senha" element={<EsqueciSenha />} />
+        <Route path="/esqueci-senha" element={<EsqueciSenha />} />
 
         {/* Rotas protegidas */}
         <Route element={<RotaPrivada />}>
